@@ -58,7 +58,7 @@ A few noticeable shortcoming of the current pipeline include:
 ### 3. Possible improvements to pipeline
 
 To address these shortcomings, the following improvements could be made:
-1. For the jittery lane markers, instead of using a 10 frame buffer, a low pass filter with lower delay could be used to smooth the lane marking locations, improving the visual display of the lane marker, while introducing stability or response time issues when steering control is implemented. 
+1. For the jittery lane markers, instead of using a 10 frame buffer, a low pass filter with lower delay could be used to smooth the lane marking locations, improving the visual display of the lane marker, while taking care to avoid introducing stability or response time issues when steering control is implemented. 
 2. Improved contrast through analysis in the color space might make it easier to detect a faded yellow lane on concrete.
 3. The lane marker length could be fine tuned based on information such as image size/shape, output of canny and hough transforms
 4. The lane markers could be modified to be curved lines or segmented lines.
