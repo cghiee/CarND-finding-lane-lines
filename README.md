@@ -1,5 +1,3 @@
-
-
 # **Finding Lane Lines on the Road** 
 
 <i>Clark Hochgraf
@@ -25,7 +23,7 @@ My pipeline consisted of 6 steps. At each stage the image output was renamed for
 
 * The image was converted from color to grayscale (img_g). 
 * Next, the image was blurred with a gaussian filter with 9x9 kernel (img_gb). 
-* Canny edge detection was applied with a low threshold of 100, and high of 200 (img_gbc). 
+* Canny edge detection was applied with a low threshold of 40, and high of 80 (img_gbc). 
 * The vertices of a region of interest were found and applied to mask of the region where lane lines are expected while ignoring other regions of the image (img_gbcr). 
 
 * Then a hough transform was used to find lines in the image (img_gbcrl).
@@ -35,6 +33,12 @@ In order to draw a single line on the left and right lanes, I modified the <stro
 
 
 ---
+<img src="test_videos_output/img_g.jpg" width="480" alt="img_g" />
+<img src="test_videos_output/img_gb.jpg" width="480" alt="img_gb" />
+<img src="test_videos_output/img_gbc.jpg" width="480" alt="img_gbc" />
+<img src="test_videos_output/img_gbcr.jpg" width="480" alt="img_gbcr" />
+<img src="test_videos_output/img_gbcrl.jpg" width="480" alt="img_gbcrl" />
+<img src="test_videos_output/img_gbcrlw.jpg" width="480" alt="final lane marker on original image" />
 
 
 
@@ -43,7 +47,7 @@ In order to draw a single line on the left and right lanes, I modified the <stro
 
 A few noticeable shortcoming of the current pipeline include:
 1. In the road videos, the lane marker line overlay is jittery, jumping around from frame to frame. While not inaccurate, it is distracting.
-2. When the lane contrast is low, such as in the challenge video where a yellow lane goes over a concrete bridge, the hough transform can fail to detect the lane. This can be noticed as the lane line hold a fixed position for  number of video frames and then jumping to the correct lane location once the lane image has sufficient contrast.
+2. When the lane contrast is low, such as in the challenge video where a yellow lane goes over a concrete bridge, the hough transform can fail to detect the lane. This can be noticed as the lane line holds a fixed position for a number of video frames and then jumping to the correct lane location once the lane image has sufficient contrast.
 3. The lane markers are at times longer than the lane in the image. 
 4. The lane markers are straight lines and do not match the curvature of the lane.
 5. The thresholds for region of interest, canny, are hardcoded.
@@ -60,65 +64,4 @@ To address these shortcomings, the following improvements could be made:
 5. The thresholds could be parameterized for more convenient tuning.
 6. Add error handling for the case where no lines are detected in an image.
 
-
-
-
-
-
-
 ---
-<img src="test_videos_output/img_g.jpg" width="480" alt="img_g" />
-<img src="test_videos_output/img_gb.jpg" width="480" alt="img_gb" />
-<img src="test_videos_output/img_gbc.jpg" width="480" alt="img_gbc" />
-<img src="test_videos_output/img_gbcr.jpg" width="480" alt="img_gbcr" />
-<img src="test_videos_output/img_gbcrl.jpg" width="480" alt="img_gbcrl" />
-<img src="test_videos_output/img_gbcrlw.jpg" width="480" alt="final lane marker on original image" />
-
-
-
-
-
-# **Finding Lane Lines on the Road** 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
-
-<img src="examples/laneLines_thirdPass.jpg" width="480" alt="Combined Image" />
-
-Overview
----
-
-When we drive, we use our eyes to decide where to go.  The lines on the road that show us where the lanes are act as our constant reference for where to steer the vehicle.  Naturally, one of the first things we would like to do in developing a self-driving car is to automatically detect lane lines using an algorithm.
-
-In this project you will detect lane lines in images using Python and OpenCV.  OpenCV means "Open-Source Computer Vision", which is a package that has many useful tools for analyzing images.  
-
-To complete the project, two files will be submitted: a file containing project code and a file containing a brief write up explaining your solution. We have included template files to be used both for the [code](https://github.com/udacity/CarND-LaneLines-P1/blob/master/P1.ipynb) and the [writeup](https://github.com/udacity/CarND-LaneLines-P1/blob/master/writeup_template.md).The code file is called P1.ipynb and the writeup template is writeup_template.md 
-
-To meet specifications in the project, take a look at the requirements in the [project rubric](https://review.udacity.com/#!/rubrics/322/view)
-
-
-
-
-
-#**Background Material**
-
-The Project
----
-
-## If you have already installed the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) you should be good to go!   If not, you should install the starter kit to get started on this project. ##
-
-**Step 1:** Set up the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) if you haven't already.
-
-**Step 2:** Open the code in a Jupyter Notebook
-
-You will complete the project code in a Jupyter notebook.  If you are unfamiliar with Jupyter Notebooks, check out [Udacity's free course on Anaconda and Jupyter Notebooks](https://classroom.udacity.com/courses/ud1111) to get started.
-
-Jupyter is an Ipython notebook where you can run blocks of code and see results interactively.  All the code for this project is contained in a Jupyter notebook. To start Jupyter in your browser, use terminal to navigate to your project directory and then run the following command at the terminal prompt (be sure you've activated your Python 3 carnd-term1 environment as described in the [CarND Term1 Starter Kit](https://github.com/udacity/CarND-Term1-Starter-Kit/blob/master/README.md) installation instructions!):
-
-`> jupyter notebook`
-
-A browser window will appear showing the contents of the current directory.  Click on the file called "P1.ipynb".  Another browser window will appear displaying the notebook.  Follow the instructions in the notebook to complete the project.  
-
-**Step 3:** Complete the project and submit both the Ipython notebook and the project writeup
-
-## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
-
