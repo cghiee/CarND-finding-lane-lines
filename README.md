@@ -66,6 +66,15 @@ To address these shortcomings, the following improvements could be made:
 
 
 
+---
+<img src="test_videos_output/img_g.jpg" width="480" alt="img_g" />
+<img src="test_videos_output/img_gb.jpg" width="480" alt="img_gb" />
+<img src="test_videos_output/img_gbc.jpg" width="480" alt="img_gbc" />
+<img src="test_videos_output/img_gbcr.jpg" width="480" alt="img_gbcr" />
+<img src="test_videos_output/img_gbcrl.jpg" width="480" alt="img_gbcrl" />
+<img src="test_videos_output/img_gbcrlw.jpg" width="480" alt="final lane marker on original image" />
+
+
 
 
 
